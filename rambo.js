@@ -17,33 +17,35 @@ var phraseCulte = [
 var currentGiveaway = [];
 
 client.on('message', message => {
-	if (message.content.charAt(0) === '!') {
+	if (message.content.startsWith('!john')) {
 		console.log('INFO - Commande '+ message.content.substring(1).split(' ')[0] +' detected. Author : '+message.author.username);
-		switch(message.content.substring(1).split(' ')[0]){
+		var content = message.content.split(' ').slice(1);
+		switch(content[0]){
 			case 'ping':
 				message.reply('Pong !');
 			break;
-			case 'john':
-				message.channel.send(phraseCulte[Math.floor(Math.random() * phraseCulte.length)]);
-			break;
-			
 			// Gestion des giveaway
 			case 'giveaway':
-			
+			case 'gway':
 				switch(message.content.split(' ')[1]){
 					case 'create':
+					case '-c':
 						createGiveaway(message);
 					break;
-					case 'see':
+					case 'list':
+					case '-l':
 						message.reply('give see');
 					break;
 					case 'edit':
+					case '-e':
 						message.reply('give edit');
 					break;
-					case 'end':
+					case 'finish':
+					case '-f':
 						message.reply('give end');
 					break;
 					case 'delete':
+					case '-d':
 						message.reply('give delete');
 					break;
 					default:
@@ -54,7 +56,7 @@ client.on('message', message => {
 			break;
 			
 			default:
-				message.reply('Je ne connais pas cette commande !');
+				message.channel.send(phraseCulte[Math.floor(Math.random() * phraseCulte.length)]);
 			break;
 		}
   }
