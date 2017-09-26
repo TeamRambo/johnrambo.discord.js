@@ -12,6 +12,7 @@ var phraseCulte = [
 	'Ce que vous appelez l’enfer, il appelle ça chez lui.',
 	'Je ne viens pas sauver Rambo de la police, je viens sauver la police de Rambo !',
 	'Pour survivre à la guerre, il faut devenir la guerre.',
+	'En ville, tu fais la loi. Ici, c’est moi. Alors fais pas chier. Fais pas chier ou je te ferai une guerre comme t’en as jamais vue.',
 ];
 
 var currentGiveaway = [];
