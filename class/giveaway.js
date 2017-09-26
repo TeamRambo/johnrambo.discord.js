@@ -1,10 +1,10 @@
+const GiveawayList = require('./giveawaylist');
+const GiveawayDetails = require('./giveawaydetails');
+
 // Constructor
-function Giveaway(name, server, multiWinner) {
-	this.name = name;
-	this.listParticipant = [];
-	this.listKey = [];
-	this.server = server;
-	this.listOptions = {multiWinner : true};
+function Giveaway() {
+	this.giveaway_list = new GiveawayList();
+	this.giveaway_details = new GiveawayDetails();
 }
 
 Giveaway.prototype.endGiveway = function() {
@@ -23,9 +23,9 @@ Giveaway.prototype.getParticipant = function() {
 	return this.listParticipant;
 }
 	
-Giveaway.prototype.addKey = function(key) {
-	this.listKey.push(key);
-	return this;
+Giveaway.prototype.addKey = function(guild_id, key) {
+	this.giveaway_list.add(guild_id, key);
+	this.giveaway_details.set(key, null);
 }
 	
 Giveaway.prototype.getKey = function() {

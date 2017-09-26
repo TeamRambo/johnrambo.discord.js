@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const Giveaway = require('./class/giveaway');
-const CONFIG = require('./config/config.json')
+const CONFIG = require('./config/config.json');
 const client = new Discord.Client();
 
 client.on('ready', () => {
@@ -28,10 +28,14 @@ client.on('message', message => {
 			// Gestion des giveaway
 			case 'giveaway':
 			case 'gway':
-				switch(message.content.split(' ')[1]){
+				switch(content[1]){
 					case 'create':
 					case '-c':
-						createGiveaway(message);
+						message_id = '';
+						message.reply('GiveAway créé ! Réagissez !').then(msg => message_id = msg.id);
+						var gway = new Giveaway();
+						gway.addKey(message.guild.id, message_id);
+						//createGiveaway(message);
 					break;
 					case 'list':
 					case '-l':
